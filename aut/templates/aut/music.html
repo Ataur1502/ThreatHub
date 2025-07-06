@@ -1,0 +1,130 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song sign up</title>
+</head>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+  font-family: Helvetica, sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.centered-form label {
+  margin-bottom: 5px;
+}
+
+.centered-form input {
+  margin-bottom: 15px;
+}
+
+.centered-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.centered-form button:hover {
+  background-color: #0056b3;
+}
+
+#musicCard{
+    margin: auto;
+    display: block;
+    align-items: center;
+}
+
+.music-box{
+    background-color: #b7dfff;
+    border: solid 3px;
+    border-color: #b7dfff;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.submit{
+    text-decoration: none;
+    background-color: #2E8Bc0;
+    border-color: #2E8Bc0;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    border-width: 2;
+    cursor: pointer;
+    border-bottom-right-radius: 0;
+}
+
+.submit:hover{
+    background-color: white;
+    border-color: #2E8Bc0;
+    color: #2E8Bc0;
+    border-width: 2px;
+}
+</style>
+<body>
+    
+        
+  
+    <form id="musicCard" method="post">
+        <h1> choose a music </h1>
+        {% csrf_token %}
+        <div class="music-box">
+            <input id="1" type="radio" name="selected_music" value="1">
+            <div class="music-cover"></div>
+            <div class="music-details">
+                <h2>Song Title 1</h2>
+                <p>AR.Rahaman</p>
+                <audio controls>
+                    <source src="{% static 'music/AR1.mp3' %}" >
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+        <br>
+        <div class="music-box">
+            <input id="2" type="radio" name="selected_music" value="1">
+            <div class="music-cover"></div>
+            <div class="music-details">
+                <h2>Song Title 2</h2>
+                <p>Alan Walker</p>
+                <audio controls>
+                    <source src="{% static 'music/Aw1.mp3' %}" >
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+        <br>
+        
+        <br><br>
+        <button type="submit" class="submit">Submit</button>
+    </form>
+</body>
+</html>

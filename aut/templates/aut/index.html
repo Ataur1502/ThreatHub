@@ -1,0 +1,718 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
+  <title>ThreatHub</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #080708;
+      color: #fff;
+    }
+
+    header {
+      background-color: #000;
+      padding: 5px;
+      display: flex;
+    }
+
+    #logo {
+      margin-left: 40%;
+      color: #fdca40;
+      text-decoration: none;
+      font-size: 40px;
+      font-weight: bold;
+      font-family: 'Silkscreen', sans-serif;
+    }
+
+    #login {
+      padding: 8px 16px;
+      background-color: #fdca40;
+      margin-left: 30%;
+      color: black;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition-duration: 0.4s;
+
+    }
+
+    #signup {
+      padding: 8px 16px;
+      margin-left: 20px;
+      margin-right: 10px;
+      background-color: #fdca40;
+      color: black;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition-duration: 0.4s;
+    }
+
+    #login:hover,
+    #signup:hover {
+      background-color: #fff;
+      color: #080708;
+    }
+
+    .menu:hover {
+      color: #fdca40;
+    }
+
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: black;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+    }
+
+    .sidenav a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 25px;
+      color: white;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidenav a:hover {
+      color: #fdca40;
+    }
+
+    .sidenav .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+    }
+
+    @media screen and (max-height: 450px) {
+      .sidenav {
+        padding-top: 15px;
+      }
+
+      .sidenav a {
+        font-size: 18px;
+      }
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      font-family: Verdana, sans-serif;
+      margin: 0
+    }
+
+    .mySlides {
+      display: none
+    }
+
+    img {
+      vertical-align: middle;
+    }
+
+
+    .slideshow-container {
+      max-width: 1000px;
+      position: relative;
+      margin: auto;
+      margin-top: 10px;
+    }
+
+
+    .prev,
+    .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -22px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+    }
+
+
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+
+    .prev:hover,
+    .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+
+    .text {
+      color: black;
+      background: #fdca20;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-size: 18px;
+      padding: 10px;
+      position: absolute;
+      bottom: 0px;
+      width: 100%;
+      text-align: left;
+    }
+
+
+
+
+
+    .dot {
+      cursor: pointer;
+      height: 15px;
+      width: 15px;
+      margin: 0 2px;
+      background-color: #fdca40;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+
+    .active,
+    .dot:hover {
+      background-color: white;
+    }
+
+    /* Fading animation */
+    .fade {
+      animation-name: fade;
+      animation-duration: 1.5s;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: .4
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    /* On smaller screens, decrease text size */
+    @media only screen and (max-width: 300px) {
+
+      .prev,
+      .next,
+      .text {
+        font-size: 11px
+      }
+    }
+
+    .welcome-container {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      height: 200px;
+      margin-right: 0%;
+      margin-top: 20px;
+    }
+
+    .welcome-box {
+      background-color: #fff;
+      color: #080708;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-size: 30px;
+      text-align: left;
+      padding: 25x;
+      flex: 1;
+      margin-right: 10px;
+    }
+
+    .heading-box {
+      background-color: #fff;
+      color: #000;
+      padding: 0px;
+      font-family: 'Silkscreen', sans-serif;
+      font-size: 25px;
+      text-align: center;
+      flex: 1;
+      margin-left: 10px;
+    }
+
+    .news-section {
+      text-align: center;
+      margin-bottom: 30px;
+      background-color: #080708;
+      margin-top: 200px;
+    }
+
+    .section-title {
+      font-size: 48px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 50px;
+      color: #fdca40;
+      font-family: 'Times New Roman', Times, serif;
+      margin-top: 2px;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 2px;
+      margin-bottom: 10px;
+    }
+
+    .news-card {
+      background-color: lightyellow;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-left: 10px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    .news-card:hover {
+      transform: scale(1.05);
+      background-color: #fff;
+    }
+
+    .news-card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .news-card h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #080708;
+      text-align: left;
+    }
+
+    .news-card p {
+      font-size: 14px;
+      color: #080708;
+      text-align: left;
+    }
+
+    .news-card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .source-button {
+      text-align: center;
+      background-color: #080708;
+      color: #fdca40;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition-duration: 0.4s;
+
+    }
+
+    .source-button:hover {
+      background-color: #ccc;
+      color: #080708;
+
+    }
+
+    .faq-heading {
+      text-align: center;
+      color: #fdca40;
+      font-size: 20px;
+      width: 100%;
+      height: 50px;
+      margin-top: 5px;
+      font-family: 'Silkscreen', sans-serif;
+    }
+
+    .faq-section {
+      display: flex;
+      text-align: center;
+      margin-bottom: 30px;
+      background: #fff;
+      margin-top: 20px;
+      margin-left: 0%;
+    }
+
+    .faq-box {
+      flex: 0 0 32.5%;
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      margin-left: 10px;
+    }
+
+    .question-box {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #080708;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+    .answer-box {
+      font-size: 16px;
+      color: #666;
+      padding: 20px;
+      border-radius: 8px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+    }
+
+    .footer-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #080708;
+      color: #fff;
+      padding: 10px 20px;
+    }
+
+    .footer-subsection {
+      flex: 0 0 30%;
+      margin-bottom: 20px;
+    }
+
+    .footer-subsection h4 {
+      color: #fdca40;
+      margin-bottom: 10px;
+    }
+
+    .footer-subsection ul {
+      list-style: none;
+      text-align: justify;
+      padding: 20px;
+      margin-left: 37%;
+    }
+
+    .footer-subsection li {
+      margin-bottom: 5px;
+    }
+
+    .social-media-logos {
+      flex: 0 0 30%;
+      display: flex;
+      align-items: center;
+      margin-left: 45%;
+    }
+
+    .social-media-logo {
+      margin-top: 50px;
+      margin-right: 20px;
+      width: 30px;
+      height: 30px;
+    }
+
+    .threathub-logo {
+      flex: 0 0 30%;
+      text-align: center;
+      margin-left: 35%;
+      margin-top: 40px;
+      color: #fdca20;
+    }
+
+    .signup-box {
+      border: 1px solid #ddd;
+      background-color: lightyellow;
+      color: #080708;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-size: 30px;
+      padding: 0px;
+      border-radius: 8px;
+      text-align: center;
+      margin-top: 25px;
+      /* Add other styles for your signup box */
+    }
+
+    .signup-button {
+      background-color: #fdca40;
+      color: #080708;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    .signup-button:hover {
+      background-color: #080708;
+      color: #fdca40;
+    }
+    .user {
+      margin-top: 250px;
+      background-color: #fdca40;
+      color: #080708;
+      font-size: 35px;
+      padding: 0px;
+      text-align: center;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      border-color: #ccc;
+
+    }
+
+    .user button {
+      background-color: #080708;
+      color: #fdca40;
+      cursor: pointer;
+      margin-right: 15px;
+      padding: 8px;
+      border-radius: 7px;
+    }
+    .user p {
+    margin-top: 0%;
+    }
+
+    .user button:hover {
+      background-color: #fdca40;
+      color: #080708;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="/aboutus">About</a>
+      <a href="/faq">FAQ</a>
+      <a href="/terms">Terms and Conditions</a>
+      <a href="/contactus">Contact</a>
+      <div class="user">
+        <img src="{% static 'images/profile.png' %}" style="height: 50px; width: 50px;">
+        <p>Guest user</p>
+        <a class="ub" href="/signup"><button>Signup</button></a>
+      </div>
+    </div>
+    <span class="menu" style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776;</span>
+
+    <a href="#" id="logo">ThreatHub</a>
+    <button id="login" onclick="login()">Login</button>
+    <button id="signup" onclick="signup()">Signup</button>
+  </header>
+  <div class="slideshow-container">
+
+    <div class="mySlides fade">
+      <img src="{% static 'images/Security-Breach-Investigation.jpg' %}" style="width: 100%;height:500px;">
+      <div class="text"><b>Data Breach</b><br><br>Discover the latest in data breach news on our page. Stay updated on
+        security incidents, expert insights, and tips to safeguard your digital presence. Your quick source for staying
+        ahead in the ever-evolving world of cybersecurity...<a href="#">Learn more</a></div>
+    </div>
+
+    <div class="mySlides fade">
+      <img src="{% static 'images/CyberArt.jpg' %}" style="width:100%;height:500px;">
+      <div class="text"><b>Term and Conditions</b><br><br>Our Terms and Conditions provide the guidelines and agreements
+        that ensure a secure and transparent interaction between you and our platform. Explore the details that govern
+        your journey towards a seamless online experience...<a href="/terms">Learn more</a></div>
+    </div>
+
+    <div class="mySlides fade">
+      <img src="{% static 'images/iStock-917566410.webp' %}" style="width:100%; height: 500px;">
+      <div class="text"><b>LearnHub</b><br><br>Empower yourself with knowledge! Explore our cybersecurity education page
+        to unlock the secrets of online safety. From threat awareness to secure practices, dive into a world of digital
+        defense and fortify your skills in the ever-evolving landscape of cybersecurity...<a href="#">Learn more</a>
+      </div>
+    </div>
+
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+
+  </div>
+  <br>
+
+  <div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+  </div>
+
+  <div class="welcome-container">
+    <div class="heading-box">
+      <h1>Welcome to Our Website!</h1>
+    </div>
+    <div class="welcome-box">
+      <p>Your one-stop destination for all cybersecurity news articles. Dive into the world of secure networks, data
+        breaches, and cutting-edge technologies. Stay informed and protect your digital assets!</p>
+    </div>
+  </div>
+  <div class="news-section">
+    <div class="section-title">ThreatHub | Cyber Security | Latest News</div>
+
+    <div class="news-grid">
+      {% for i in articles %}
+      <div class="news-card">
+        <img src="{{i.urlToImage}}" alt="News Image 1">
+        <h3>{{i.title}}</h3>
+        <p>{{i.description}}</p>
+        <p><b>Author:</b>{{i.author}}</p>
+        <p><b>Date:</b>{{i.publishedAt}}</p>
+        <a href="{{i.url}}"><button class="source-button">Read More</button></a>
+      </div>
+
+      <!--div class="news-card">
+            <img src="C:\Users\ataur\cyber-security-business-technology-antivirus-alert-protection-firewall-cybersecurity-information-217658546.webp"  alt="News Image 2">
+            <h3>News Title 2</h3>
+            <p>Here's a summary of the second news article. Stay informed about the latest happenings!</p>
+            <button class="source-button">Read More</button>
+          </div>
+    
+          <div class="news-card">
+            <img src="C:\Users\ataur\istockphoto-1144604245-612x612.jpg" alt="News Image 3">
+            <h3>News Title 3</h3>
+            <p>Read about the third news article and stay up-to-date with current events and developments.</p>
+            <button class="source-button">Read More</button>
+          </div-->
+      {% endfor %}
+    </div>
+    <div class="signup-box">
+      <p>For more updates, sign up now!</p>
+      <a href="/signup"><button class="signup-button">Sign Up</button></a>
+    </div>
+    <div class="faq-heading">
+      <h1>Frequently Asked Questions</h1>
+    </div>
+    <div class="faq-section">
+      <div class="faq-box">
+        <p class="question-box">How does ThreatHub gather cybersecurity news?</p>
+        <div class="answer-box">ThreatHub aggregates cybersecurity news through a reliable news API. This API
+          systematically pulls in real-time information from various reputable sources across the web, ensuring that our
+          users receive timely and comprehensive updates on the latest cybersecurity threats and developments.</div>
+      </div>
+
+      <div class="faq-box">
+        <p class="question-box">Can I customize the types of cybersecurity news I receive through ThreatHub?</p>
+        <div class="answer-box">Yes, ThreatHub allows users to customize their news feed based on their specific
+          interests and preferences. You can filter news articles by topics such as malware, data breaches, hacking
+          incidents, and more. This customization feature ensures that you stay informed about the cybersecurity issues
+          most relevant to your needs.</div>
+      </div>
+
+      <div class="faq-box">
+        <p class="question-box">Is ThreatHub's news aggregation service secure?</p>
+        <div class="answer-box"> Absolutely. ThreatHub prioritizes user security and privacy. We use encryption
+          protocols to secure the communication between our platform and the news API, ensuring that your data remains
+          confidential. Additionally, we adhere to industry best practices to protect our users from potential security
+          threats, making ThreatHub a trusted source for staying updated on cybersecurity news.</div>
+      </div>
+    </div>
+
+    <div class="footer-section">
+      <div class="footer-subsection">
+        <h4>Explore</h4>
+        <ul>
+          <li>Articles</li>
+          <li>Categories</li>
+          <li>Trending</li>
+        </ul>
+      </div>
+
+      <div class="footer-subsection">
+        <h4>Connect</h4>
+        <ul>
+          <li>Facebook</li>
+          <li>Twitter</li>
+          <li>Instagram</li>
+        </ul>
+      </div>
+
+      <div class="footer-subsection">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="/contactus">Contact Us</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li>Help Center</li>
+        </ul>
+      </div>
+
+      <div class="social-media-logos">
+        <img class="social-media-logo" src="{% static 'images/facebook.png' %}" alt="Facebook Logo">
+        <img class="social-media-logo" src="{% static 'images/twitter.png' %}" alt="Twitter Logo">
+        <img class="social-media-logo" src="{% static 'images/instagram (1).png' %}" alt="Instagram Logo">
+      </div>
+
+      <div class="threathub-logo">
+        <div>© Threathub.2023</div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+    <script>
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+      }
+
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+      }
+      let slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides(slideIndex += n);
+      }
+
+      function currentSlide(n) {
+        showSlides(slideIndex = n);
+      }
+
+      function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+      }
+      setInterval(function () {
+        plusSlides(1);
+      }, 8000);
+      function login() {
+        location.replace("/login")
+      }
+      function signup() {
+        location.replace("/signup")
+      }
+
+    </script>
+
+</body>
+
+</html>

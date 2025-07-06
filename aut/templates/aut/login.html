@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
+
+
+<style>
+       
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: black;
+    color: #fdca40;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    font-family: "Silkscreen",sans-serif;
+}
+
+.logo {
+    font-size: 80px;
+    font-weight: bold;
+}
+
+.signup-button {
+    background-color: #fdca40;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+}
+
+.signup-button:hover {
+    background-color:white;
+    color:black;
+}
+
+.content {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.info-box {
+    padding: 20px;
+    border-radius: 5px;
+    width: 45%;
+}
+h2 {
+    text-align: center;
+    color: black;
+    font-family: 'Silkscreen',sans-serif;
+    font-size: 40px;
+    
+
+}
+
+.info-box h1 {
+    font-family: 'Silkscreen',sans-serif;
+    text-align: center;
+    font-size: 48px;
+    color: black;
+    
+    
+}
+
+.info-box p {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 30px;
+    text-align: center;
+    font-size: 30px;
+    color: black;
+    
+}
+
+.signin-box {
+    padding: 20px;
+    border-radius: 5px;
+    width: 50%;
+}
+
+
+
+.input-group {
+    margin-bottom: 30px;
+    text-align: center;
+}
+p {
+    text-align: center;
+    margin-top: 0%;
+}
+
+label {
+    display: block;
+}
+
+input {
+    width: 50%;
+    background-color: whitesmoke;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: black;
+    width: 55% ;
+    color: #fdca40;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-size: 20px
+    
+}
+
+button:hover {
+    background-color: #fdca40;
+    color:black;
+
+}
+
+body {
+    background-color: #ccc;
+}
+
+
+footer {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+}
+
+.copyright {
+    font-size: 30px;
+    padding: 20px;
+    font-family:Arial, Helvetica, sans-serif;
+    color: #fdca40;
+}
+
+.social-media {
+    display: flex;
+    padding: 20px;
+    gap: 30px;
+}
+
+.instagram,
+.twitter {
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.instagram:hover,
+.twitter:hover {
+    color: #fdca40;
+}
+.popup{
+    color:red;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+}
+
+</style>
+</head>
+<body>
+    <header>
+        <div class="logo">THREATHUB</div>
+       <a href="/signup" ><div class="signup-button">Sign Up</div></a>
+    </header>
+    {% if messages %}
+    <div id="popup" class="popup">
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+{% endif %}
+    <div class="content">
+        <div class="info-box">
+            <h1>Welcome to ThreatHub!</h1>
+            <p>Discover the leading hub for comprehensive cybersecurity news updates. Explore secure systems, data breach incidents, and state-of-the-art developments. Remain knowledgeable and safeguard your digital assets!</p>
+        </div>
+        
+        <div class="signin-box">
+           <h2>Log In</h2>
+            <form action="/login" method="post">
+                {% csrf_token %}
+                <div class="input-group">
+                    <input type="text" placeholder="Username" id="username" name="username" required>
+                </div>
+                
+                <div class="input-group">
+
+                    <input type="password" placeholder="Password" id="pass1" name="pass1" required>
+                </div>
+                
+                <div class="input-group">
+                <button  type="submit">Sign in</button>
+            </div>
+            <p>Not registred yet?<a href="/signup">SignUp</a></p>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <div class="copyright">© Threathub.2023</div>
+        <div class="social-media">
+            <div class="instagram" onclick="insta()">Instagram</div>
+            <div class="twitter" onclick="twi()">Twitter</div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        var popup = document.getElementById('popup');
+
+        
+        if (popup) {
+            popup.style.display = 'block';
+
+
+            setTimeout(function () {
+                popup.style.display = 'none';
+            }, 5000);
+        }
+    });
+        function signup() {
+  location.replace("C:\\Users\\ataur\\header.html")
+}
+function insta(){
+  location.replace("https://www.instagram.com/")
+}
+        function twi(){
+  location.replace("https://twitter.com/")
+        }
+    </script>
+</body>
+</html>
