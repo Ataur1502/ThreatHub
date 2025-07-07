@@ -136,6 +136,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'aut/static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Needed for collectstatic
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 # Default primary key field type
